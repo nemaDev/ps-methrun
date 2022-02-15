@@ -3,16 +3,17 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local Cooldown = false
 
 RegisterServerEvent('ps-methrun:server:startr', function()
-    local player = QBCore.Functions.GetPlayer(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
 
-	if player.PlayerData.money['cash'] >= Config.RunCost then
-		player.Functions.RemoveMoney('cash', Config.RunCost)
+    if Player.PlayerData.money['cash'] >= Config.RunCost then
+        Player.Functions.RemoveMoney('cash', Config.RunCost)
         Player.Functions.AddItem("casekey", 1)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["casekey"], "add")
-		TriggerClientEvent("ps-methrun:server:runactivate", source)
-	else
-		TriggerClientEvent('QBCore:Notify', source, Lang:t("error.you_dont_have_enough_money"), 'error')
-	end
+        TriggerClientEvent("ps-methrun:server:runactivate", src)
+    else
+        riggerClientEvent('QBCore:Notify', source, Lang:t("error.you_dont_have_enough_money"), 'error')
+    end
 end)
 
 -- cool down for job
