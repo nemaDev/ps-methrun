@@ -11,7 +11,7 @@ RegisterServerEvent('ps-methrun:server:startr', function()
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["casekey"], "add")
 		TriggerClientEvent("ps-methrun:server:runactivate", source)
 	else
-		TriggerClientEvent('QBCore:Notify', source, 'You Dont Have Enough Money', 'error')
+		TriggerClientEvent('QBCore:Notify', source, Lang:t("error.you_dont_have_enough_money"), 'error')
 	end
 end)
 
